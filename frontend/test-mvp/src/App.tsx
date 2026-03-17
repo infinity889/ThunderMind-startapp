@@ -1,29 +1,24 @@
-import { useEffect, useState } from 'react';
+import { Catalog } from './components/Catalog';
+import './App.css';
 
-interface User {
-  id: number;
-  name: string;
-}
-
-const App = () => {
-  const [users, setUsers] = useState<User[]>([]);
-
-  useEffect(() => {
-    // Используем относительный путь благодаря прокси
-    fetch('/api/users/')
-      .then((res) => res.json())
-      .then((data: User[]) => setUsers(data))
-      .catch((err) => console.error(err));
-  }, []);
-
+function App() {
   return (
-    <div>
-      <h1>Пользователи из Django:</h1>
-      <ul>
-        {users.map(user => <li key={user.id}>{user.name}</li>)}
-      </ul>
+    <div className="min-h-screen bg-gray-900 text-gray-100">
+      <header className="p-4 border-b border-gray-800 shadow-md bg-gray-800">
+        <h1 className="text-2xl font-bold text-center tracking-wider text-blue-500">
+          THUNDER MIND STARTAPP
+        </h1>
+      </header>
+      
+      <main>
+        <Catalog />
+      </main>
+
+      <footer className="text-center p-8 text-gray-600 text-sm">
+        &copy; 2026 Разработка MVP
+      </footer>
     </div>
   );
-};
+}
 
 export default App;
