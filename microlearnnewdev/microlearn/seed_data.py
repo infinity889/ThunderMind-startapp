@@ -5,6 +5,7 @@
 
 from courses.models import Course, Module, Flashcard, QuizQuestion
 
+
 # ─── Удаляем старые данные ───
 Course.objects.all().delete()
 
